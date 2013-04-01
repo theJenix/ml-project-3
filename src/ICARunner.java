@@ -46,7 +46,6 @@ public class ICARunner extends AFilterRunner {
         IndependentComponentAnalysis ica = new IndependentComponentAnalysis(dataset.copy());
         VarianceCounter vc = new VarianceCounter(ica.getPCA().getEigenValues());
 
-//        writer.println(.getEigenValues());
         for (double varThold : this.varThresholds) {
             String ext = String.format("_ica_%02.02f", varThold * 100);
             DataSet curset = dataset.copy();
@@ -56,23 +55,5 @@ public class ICARunner extends AFilterRunner {
         }
         
         writer.close();
-//        ArffDataSetReader reader = new ArffDataSetReader(this.dataFilePath);
-//        DataSet set = reader.read();
-//
-//        System.out.println("Before PCA");
-//        System.out.println(set);
-//        PrincipalComponentAnalysis filter = new PrincipalComponentAnalysis(set);
-//        System.out.println(filter.getEigenValues());
-//        System.out.println(filter.getProjection().transpose());
-//        filter.filter(set);
-//        System.out.println("After PCA");
-//        System.out.println(set);
-//        Matrix reverse = filter.getProjection().transpose();
-//        for (int i = 0; i < set.size(); i++) {
-//            Instance instance = set.get(i);
-//            instance.setData(reverse.times(instance.getData()).plus(filter.getMean()));
-//        }
-//        System.out.println("After reconstructing");
-//        System.out.println(set);
     }
 }
